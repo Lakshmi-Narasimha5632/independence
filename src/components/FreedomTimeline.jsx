@@ -2,80 +2,113 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, ChevronDown, ChevronUp, User, BookOpen } from 'lucide-react';
 
+const imagePath = (filename) =>
+  `${import.meta.env.BASE_URL}images/${filename}`;
+
 const timelineEvents = [
   {
     year: '1857',
     title: 'The First War of Independence',
     subtitle: 'Revolt of 1857',
-    summary: 'The historic uprising that shook the foundations of the British East India Company.',
-    description: 'Triggered by the introduction of greased cartridges in the sepoy army, the rebellion erupted in Meerut and quickly swept through northern and central India. It marked the first unified, armed resistance against British rule, transforming the struggle from localized revolts into a national awakening.',
-    fighters: 'Mangal Pandey, Rani Lakshmibai of Jhansi, Bahadur Shah Zafar, Tatya Tope, Begum Hazrat Mahal',
-    image: '/images/first_war.jpg'
+    summary:
+      'The historic uprising that shook the foundations of the British East India Company.',
+    description:
+      'Triggered by the introduction of greased cartridges in the sepoy army, the rebellion erupted in Meerut and quickly spread through northern and central India. It marked a major armed resistance against British rule and became an important turning point in the history of India’s struggle for independence.',
+    fighters:
+      'Mangal Pandey, Rani Lakshmibai of Jhansi, Bahadur Shah Zafar, Tatya Tope, Begum Hazrat Mahal',
+    image: imagePath('first_war.jpg'),
   },
+
   {
     year: '1885',
     title: 'Formation of Indian National Congress',
     subtitle: 'Organizing the Political Front',
-    summary: 'The birth of a unified political organization to channel Indian demands.',
-    description: 'Founded in Bombay by retired civil servant Allan Octavian Hume and prominent Indian leaders, the Indian National Congress (INC) started as a forum for educated elites to petition for civic representation. It eventually evolved into the primary platform driving the mass movement for full independence.',
-    fighters: 'Womesh Chandra Bonnerjee (First President), Dadabhai Naoroji, Dinshaw Wacha, Allan Octavian Hume',
-    image: '/images/inc.jpg'
+    summary:
+      'The birth of a unified political organization that became an important platform for Indian political demands.',
+    description:
+      'The Indian National Congress was founded in Bombay in 1885 with Allan Octavian Hume playing a key role alongside prominent Indian leaders. It initially served as a forum for political dialogue and representation and later developed into the principal organization leading the mass movement for Indian independence.',
+    fighters:
+      'Womesh Chandra Bonnerjee, Dadabhai Naoroji, Dinshaw Wacha, Allan Octavian Hume',
+    image: imagePath('inc.jpg'),
   },
+
   {
     year: '1905',
     title: 'The Swadeshi Movement',
     subtitle: 'Economic Boycott & Self-Reliance',
-    summary: 'A fierce nationalistic response to the Partition of Bengal by the British.',
-    description: 'In response to Lord Curzon\'s strategic partition of Bengal along religious lines, nationalist leaders launched the Swadeshi movement. Ordinary citizens publicly burned British goods, boycotted imported clothing, and set up indigenous schools, mills, and businesses, demonstrating the power of economic self-reliance.',
-    fighters: 'Bal Gangadhar Tilak, Lala Lajpat Rai, Bipin Chandra Pal (Lal Bal Pal), Aurobindo Ghosh',
-    image: '/images/Swadeshi-Movement.webp'
+    summary:
+      'A powerful nationalist response to the Partition of Bengal by the British government.',
+    description:
+      'Following the Partition of Bengal in 1905, nationalist leaders promoted the Swadeshi movement. Indians boycotted British goods and encouraged indigenous industries, education, and businesses. The movement demonstrated how economic choices could become a powerful form of political resistance.',
+    fighters:
+      'Bal Gangadhar Tilak, Lala Lajpat Rai, Bipin Chandra Pal, Aurobindo Ghosh',
+    image: imagePath('Swadeshi-Movement.webp'),
   },
+
   {
     year: '1919',
     title: 'Jallianwala Bagh Massacre',
     subtitle: 'The Turning Point of British Brutality',
-    summary: 'A cold-blooded massacre of peaceful gatherers in Amritsar that outraged the nation.',
-    description: 'On Baisakhi, Brigadier-General Reginald Dyer ordered troops to block the exits and open fire without warning on thousands of unarmed families gathered at Jallianwala Bagh to protest the Rowlatt Act. Hundreds died, prompting Rabindranath Tagore to renounce his British Knighthood and permanently shifting India\'s stance toward complete self-determination.',
-    fighters: 'Dr. Saifuddin Kitchlew, Dr. Satyapal, Udham Singh (who later avenged the massacre)',
-    image: '/images/jallianwalabagh.jpg'
+    summary:
+      'A tragic massacre of unarmed civilians in Amritsar that deeply shocked and outraged India.',
+    description:
+      'On 13 April 1919, Brigadier-General Reginald Dyer ordered British troops to open fire on a large gathering at Jallianwala Bagh in Amritsar. The massacre caused widespread outrage across India and significantly weakened public confidence in British rule. Rabindranath Tagore renounced his knighthood in protest.',
+    fighters:
+      'Dr. Saifuddin Kitchlew, Dr. Satyapal, Udham Singh',
+    image: imagePath('jallianwalabagh.jpg'),
   },
+
   {
     year: '1930',
     title: 'Dandi March & Salt Satyagraha',
     subtitle: 'Defying the Empire with Salt',
-    summary: 'A historic 240-mile march that challenged the British salt monopoly.',
-    description: 'In a brilliant symbolic gesture, Mahatma Gandhi led 78 followers from Sabarmati Ashram to the coastal village of Dandi. There, he boiled seawater to break the British salt tax laws, inspiring millions across India to manufacture their own salt and triggering arrest campaigns that captured global headlines.',
-    fighters: 'Mahatma Gandhi, Sarojini Naidu, C. Rajagopalachari, Abbas Tyabji',
-    image: '/images/salt.jpg'
+    summary:
+      'A historic march led by Mahatma Gandhi that challenged the British monopoly and tax on salt.',
+    description:
+      'Mahatma Gandhi led 78 volunteers from Sabarmati Ashram to the coastal village of Dandi. On reaching the coast, Gandhi broke the British salt law by making salt from seawater. The action inspired widespread civil disobedience across India and attracted international attention.',
+    fighters:
+      'Mahatma Gandhi, Sarojini Naidu, C. Rajagopalachari, Abbas Tyabji',
+    image: imagePath('salt.jpg'),
   },
+
   {
     year: '1942',
     title: 'Quit India Movement',
     subtitle: 'The Ultimate Ultimatum: "Do or Die"',
-    summary: 'The final, massive struggle demanding immediate British departure from India.',
-    description: 'During the heights of World War II, the All India Congress Committee passed the "Quit India" resolution. Gandhi issued a clarion call: "Do or Die" (करो या मरो). Despite immediate arrests of all top leaders, the movement spread spontaneously as youth and underground networks ran parallel governments in rural districts.',
-    fighters: 'Mahatma Gandhi, Aruna Asaf Ali, Jayaprakash Narayan, Ram Manohar Lohia, Usha Mehta',
-    image: '/images/qiut-india.avif'
+    summary:
+      'A mass movement demanding an immediate end to British rule in India.',
+    description:
+      'In August 1942, the All India Congress Committee launched the Quit India Movement demanding an immediate end to British rule. Mahatma Gandhi gave the famous call of "Do or Die". Although the major leaders were arrested almost immediately, protests, underground networks, and resistance continued across different parts of India.',
+    fighters:
+      'Mahatma Gandhi, Aruna Asaf Ali, Jayaprakash Narayan, Ram Manohar Lohia, Usha Mehta',
+    image: imagePath('qiut-india.avif'),
   },
 
   {
-  year: '1943',
-  title: 'Azad Hind Fauj',
-  subtitle: 'The Army That Fought for a Free India',
-  summary: 'An armed liberation force led by Subhas Chandra Bose that sought to drive British rule out of India and establish an independent nation.',
-  description: 'The Azad Hind Fauj, also known as the Indian National Army (INA), was reorganized under the leadership of Subhas Chandra Bose in 1943. Bose sought to unite Indian soldiers and civilians in Southeast Asia around the goal of India’s independence. The INA fought alongside Japanese forces during the Burma campaign and advanced toward India, reaching areas near Imphal and Kohima. Although the military campaign ultimately failed, the INA trials after the Second World War generated widespread public sympathy and intensified nationalist sentiment across India.',
-  fighters: 'Subhas Chandra Bose, Captain Lakshmi Sahgal, Shah Nawaz Khan, Prem Kumar Sahgal, Gurbaksh Singh Dhillon',
-  image: '/images/ina.webp'
-},
+    year: '1943',
+    title: 'Azad Hind Fauj',
+    subtitle: 'The Army That Fought for a Free India',
+    summary:
+      'An armed liberation force led by Subhas Chandra Bose that sought to end British rule through military resistance.',
+    description:
+      'The Azad Hind Fauj, also known as the Indian National Army (INA), was reorganized under the leadership of Subhas Chandra Bose in 1943. Bose sought to unite Indian soldiers and civilians in Southeast Asia around the goal of Indian independence. The INA fought alongside Japanese forces during the Burma campaign and advanced toward India, reaching areas near Imphal and Kohima. Although its military campaign ultimately failed, the INA trials after the Second World War generated widespread public sympathy and strengthened nationalist sentiment across India.',
+    fighters:
+      'Subhas Chandra Bose, Captain Lakshmi Sahgal, Shah Nawaz Khan, Prem Kumar Sahgal, Gurbaksh Singh Dhillon',
+    image: imagePath('ina.webp'),
+  },
+
   {
     year: '1947',
     title: 'Independence Day',
     subtitle: 'Tryst with Destiny',
-    summary: 'The culmination of centuries of struggle, sacrifice, and resilience.',
-    description: 'At the stroke of midnight on 15 August 1947, India broke free from nearly two centuries of British rule. Jawaharlal Nehru delivered his legendary "Tryst with Destiny" speech, hoisting the Indian tricolor at the Red Fort, marking the birth of a free, sovereign democratic nation.',
-    fighters: 'Jawaharlal Nehru, Sardar Vallabhbhai Patel, Subhas Chandra Bose (Legacy), Maulana Abul Kalam Azad, and Millions of Citizens',
-    image: '/images/first-independence.avif'
-  }
+    summary:
+      'The culmination of decades of struggle, sacrifice, resistance, and political transformation.',
+    description:
+      'On 15 August 1947, India became independent from British rule. Jawaharlal Nehru delivered his historic "Tryst with Destiny" speech shortly before midnight on 14 August, as India entered a new era of independence. The national flag was raised at the Red Fort on 15 August, marking the beginning of independent India.',
+    fighters:
+      'Jawaharlal Nehru, Sardar Vallabhbhai Patel, Maulana Abul Kalam Azad, and Millions of Indians',
+    image: imagePath('first-independence.avif'),
+  },
 ];
 
 export default function FreedomTimeline() {

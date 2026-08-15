@@ -73,7 +73,7 @@ export default function NationalAnthem() {
    *
    * /audio/national-anthem.mp3
    */
-  const officialAnthemUrl = '/audio/national-anthem.mp3';
+  const officialAnthemUrl = `${import.meta.env.BASE_URL}audio/national-anthem.mp3`;
 
   // =========================================================
   // AUDIO INITIALIZATION

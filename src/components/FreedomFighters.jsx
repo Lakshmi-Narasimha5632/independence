@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Quote, Calendar, Award, X, Sparkles } from 'lucide-react';
 
+
+const imagePath = (filename) =>
+  `${import.meta.env.BASE_URL}images/${filename}`;
+
 const fightersData = [
   {
     id: 'subhas',
@@ -17,7 +21,7 @@ const fightersData = [
       { year: '1941', text: 'Escaped house arrest in Calcutta, traveling through Kabul and Moscow to reach Germany.' },
       { year: '1943', text: 'Arrived in Singapore and assumed leadership of the Indian National Army (INA).' }
     ],
-    image: '/images/netaji.jpg'
+    image: imagePath('netaji.jpg')
   },
   {
     id: 'bhagat',
@@ -33,7 +37,7 @@ const fightersData = [
       { year: '1929', text: 'Threw pamphlets in the Legislative Assembly to "make the deaf hear".' },
       { year: '1931', text: 'Hanged in Lahore Jail, becoming an immortal icon of Indian sacrifice.' }
     ],
-    image: '/images/bhagath-singh.jpg'
+    image: imagePath('bhagath-singh.jpg')
   },
   {
     id: 'sardar',
@@ -49,7 +53,7 @@ const fightersData = [
       { year: '1947', text: 'Became Home Minister, overseeing the integration of princely states.' },
       { year: '1950', text: 'Passed away, leaving a unified administrative structure.' }
     ],
-    image: '/images/sardar.jpg'
+    image: imagePath('sardar.jpg')
   },
   {
     id: 'sarojini',
@@ -65,7 +69,7 @@ const fightersData = [
       { year: '1930', text: 'Marched alongside Gandhi and led the Dharasana protest.' },
       { year: '1947', text: 'Appointed Governor of United Provinces.' }
     ],
-    image: '/images/sarojini-naidu.jpg'
+    image: imagePath('sarojini-naidu.jpg')
   },
   {
     id: 'azad',
@@ -81,7 +85,7 @@ const fightersData = [
       { year: '1928', text: 'Reorganized HSRA with Bhagat Singh and Sukhdev.' },
       { year: '1931', text: 'Martyred in Alfred Park, Allahabad, remaining free until his last breath.' }
     ],
-    image: '/images/azad.jpg'
+    image: imagePath('azad.jpg')
   },
   {
     id: 'lakshmibai',
@@ -97,7 +101,7 @@ const fightersData = [
       { year: '1857', text: 'Proclaimed Jhansi\'s independence and took command of its defenses.' },
       { year: '1858', text: 'Martyred on the battlefield near Gwalior, immortalized as a national hero.' }
     ],
-    image: '/images/lakshmibhai.jpg'
+    image: imagePath('lakshmibhai.jpg')
   },
   {
     id: 'tilak',
@@ -113,7 +117,7 @@ const fightersData = [
       { year: '1907', text: 'Led the assertive wing of the Congress demanding complete self-governance.' },
       { year: '1916', text: 'Co-founded the Home Rule League, campaigning widely for Swaraj.' }
     ],
-    image: '/images/tilak.jpg'
+    image: imagePath('tilak.jpg')
   },
   {
   id: 'alluri-sitarama-raju',
@@ -129,7 +133,7 @@ const fightersData = [
     { year: '1922-1924', text: 'Organized tribal resistance and conducted guerrilla operations against British forces in the Eastern Ghats.' },
     { year: '1924', text: 'Captured by British forces and executed on 7 May 1924, becoming a lasting symbol of courage and sacrifice.' }
   ],
-  image: '/images/alluri.jpg'
+  image: imagePath('alluri.jpg')
 }
 ];
 
